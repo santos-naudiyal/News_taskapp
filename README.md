@@ -28,9 +28,9 @@ lib/
 ├── core/         # Core utilities, constants, shared widgets, network clients
 └── features/     # Feature modules (e.g., news)
     └── news/
+        ├── bloc/           # bloc files.
         ├── data/           # Repositories, data sources, models
-        ├── domain/         # Entities, use cases, repository interfaces
-        └── presentation/   # Screens, widgets, BLoCs/Cubits
+        └── presentation/   # Screens, widgets
 ```
 
 ## Dependencies
