@@ -14,7 +14,6 @@ import 'core/api/api_endpoints.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  /// ---------------- DIO SETUP ----------------
   final dio = Dio(
     BaseOptions(
       baseUrl: ApiEndpoints.baseUrl,

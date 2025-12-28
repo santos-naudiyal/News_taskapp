@@ -19,11 +19,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     on<FetchNews>(_onFetchNews);
     on<RefreshNews>(_onRefreshNews);
     on<SearchNews>(_onSearchNews);
+    on<RefreshCurrentCategory>(_onRefreshCurrentCategory);
   }
 
-  /// -----------------------------
   /// CATEGORY / PAGINATION
-  /// -----------------------------
   Future<void> _onFetchNews(
     FetchNews event,
     Emitter<NewsState> emit,
@@ -62,9 +61,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     }
   }
 
-  /// -----------------------------
   /// REFRESH
-  /// -----------------------------
   Future<void> _onRefreshNews(
     RefreshNews event,
     Emitter<NewsState> emit,
@@ -77,9 +74,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     );
   }
 
-  /// -----------------------------
   /// SEARCH
-  /// -----------------------------
   Future<void> _onSearchNews(
     SearchNews event,
     Emitter<NewsState> emit,
@@ -112,9 +107,24 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     }
   }
 
-  /// -----------------------------
+  /// GLOBAL REFRESH
+  Future<void> _onRefreshCurrentCategory(
+    RefreshCurrentCategory event,
+    Emitter<NewsState> emit,
+  ) async {
+    if (_isSearchMode) {
+      add(SearchNews(query: _currentQuery));
+    } else {
+      add(
+        FetchNews(
+          category: _currentCategory,
+          refresh: true,
+        ),
+      );
+    }
+  }
+
   /// ERROR MAPPER
-  /// -----------------------------
   String _mapError(Object error) {
     final msg = error.toString();
 

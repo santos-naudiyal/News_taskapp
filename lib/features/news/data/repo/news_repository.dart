@@ -7,9 +7,7 @@ class NewsRepository {
 
   NewsRepository(this.apiClient);
 
-  /// -----------------------------
   /// CATEGORY / TOP HEADLINES
-  /// -----------------------------
   Future<List<ArticleModel>> fetchNews({
     required String category,
     required int page,
@@ -32,9 +30,7 @@ class NewsRepository {
         .toList();
   }
 
-  /// -----------------------------
   /// SEARCH NEWS
-  /// -----------------------------
   Future<List<ArticleModel>> searchNews({
     required String query,
     required int page,

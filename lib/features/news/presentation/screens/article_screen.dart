@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/features/news/data/models/article.dart';
 import 'package:news_app/features/news/data/services/bookmark_service.dart';
+import 'package:news_app/features/news/presentation/widgets/global_navigation_menu.dart';
+
+import 'package:share_plus/share_plus.dart';
 
 class ArticleScreen extends StatefulWidget {
   final ArticleModel article;
@@ -62,6 +65,26 @@ class _ArticleScreenState extends State<ArticleScreen> {
                 onPressed: _toggleBookmark,
               ),
               const SizedBox(width: 8),
+              IconButton(
+                tooltip: 'Share',
+                icon: const CircleAvatar(
+                  backgroundColor: Colors.black26,
+                  child: Icon(Icons.share, color: Colors.white),
+                ),
+                onPressed: () {
+                  Share.share(
+                    'Check out this article: ${article.title}\n\n${article.url}',
+                  );
+                },
+              ),
+              const SizedBox(width: 8),
+              const GlobalNavigationMenu(
+                customIcon: CircleAvatar(
+                  backgroundColor: Colors.black26,
+                  child: Icon(Icons.more_vert, color: Colors.white),
+                ),
+              ),
+              const SizedBox(width: 8),
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
@@ -101,7 +124,6 @@ class _ArticleScreenState extends State<ArticleScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-                /// 🥔 CHIP & DATE
                 Row(
                   children: [
                     Container(
@@ -135,7 +157,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                /// 📰 TITLE
+                ///  TITLE
                 Text(
                   article.title,
                   style: GoogleFonts.playfairDisplay(

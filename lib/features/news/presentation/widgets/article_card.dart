@@ -34,7 +34,7 @@ class ArticleCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// 🖼️ IMMERSIVE IMAGE
+              ///  IMMERSIVE IMAGE
               Stack(
                 children: [
                   CachedNetworkImage(
@@ -51,7 +51,7 @@ class ArticleCard extends StatelessWidget {
                     ),
                   ),
 
-                  /// ✨ GRADIENT OVERLAY
+                  ///  GRADIENT OVERLAY
                   Positioned.fill(
                     child: DecoratedBox(
                       decoration: BoxDecoration(
@@ -69,7 +69,7 @@ class ArticleCard extends StatelessWidget {
                     ),
                   ),
 
-                  /// 🏷️ SOURCE CHIP
+                  ///  SOURCE CHIP
                   Positioned(
                     top: 12,
                     left: 12,
@@ -104,7 +104,7 @@ class ArticleCard extends StatelessWidget {
                 ],
               ),
 
-              /// 📝 CONTENT
+              ///  CONTENT
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(

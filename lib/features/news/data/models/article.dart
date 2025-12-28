@@ -18,12 +18,18 @@ class ArticleModel {
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
+    String getSource() {
+      if (json['source'] is String) return json['source'];
+      if (json['source'] is Map) return json['source']['name']?.toString() ?? 'Unknown';
+      return 'Unknown';
+    }
+
     return ArticleModel(
       title: json['title']?.toString() ?? '',
       description: json['description']?.toString() ?? '',
       content: json['content']?.toString() ?? '',
-      imageUrl: json['urlToImage']?.toString() ?? '',
-      source: json['source']?['name']?.toString() ?? 'Unknown',
+      imageUrl: json['urlToImage']?.toString() ?? json['imageUrl']?.toString() ?? '',
+      source: getSource(),
       url: json['url']?.toString() ?? '',
       publishedAt: DateTime.tryParse(
             json['publishedAt']?.toString() ?? '',

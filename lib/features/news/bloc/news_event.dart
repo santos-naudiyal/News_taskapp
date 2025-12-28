@@ -26,3 +26,8 @@ class SearchNews extends NewsEvent {
 
   const SearchNews({required this.query});
 }
+
+/// Refresh current category (Global)
+class RefreshCurrentCategory extends NewsEvent {
+  const RefreshCurrentCategory();
+}

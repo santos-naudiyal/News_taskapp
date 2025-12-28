@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/features/news/bloc/news_bloc.dart';
 import 'package:news_app/features/news/bloc/news_event.dart';
 import 'package:news_app/features/news/bloc/news_state.dart';
+import 'package:news_app/features/news/presentation/widgets/global_navigation_menu.dart';
 
 import '../widgets/article_card.dart';
 import 'article_screen.dart';
@@ -94,30 +95,64 @@ class _CategoryScreenState extends State<CategoryScreen> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          SliverAppBar(
-            expandedHeight: 120,
-            pinned: true,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 0,
-            leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back,
-                color: Theme.of(context).textTheme.bodyLarge?.color,
-              ),
-              onPressed: () => Navigator.pop(context),
+         SliverAppBar(
+  expandedHeight: 120,
+  pinned: true,
+  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+  elevation: 0,
+
+  /// ✅ THIS LINE FIXES IT
+  title: Text(
+    widget.title,
+    style: GoogleFonts.playfairDisplay(
+      color: Theme.of(context).textTheme.bodyLarge?.color,
+      fontWeight: FontWeight.bold,
+      fontSize: 18,
+    ),
+  ),
+
+  leading: IconButton(
+    icon: Icon(
+      Icons.arrow_back,
+      color: Theme.of(context).textTheme.bodyLarge?.color,
+    ),
+    onPressed: () => Navigator.pop(context),
+  ),
+
+  actions: [
+    if (!widget.isSearch)
+      IconButton(
+        icon: Icon(
+          Icons.search,
+          color: Theme.of(context).textTheme.bodyLarge?.color,
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) =>
+                  const CategoryScreen(title: 'Search', isSearch: true),
             ),
-            flexibleSpace: FlexibleSpaceBar(
-              titlePadding: const EdgeInsets.only(left: 16, bottom: 16),
-              title: Text(
-                widget.title,
-                style: GoogleFonts.playfairDisplay(
-                  color: Theme.of(context).textTheme.bodyLarge?.color,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ),
+          );
+        },
+      ),
+    const GlobalNavigationMenu(),
+    const SizedBox(width: 8),
+  ],
+
+  flexibleSpace: FlexibleSpaceBar(
+    titlePadding: const EdgeInsets.only(left: 16, bottom: 16),
+    title: Text(
+      widget.title,
+      style: GoogleFonts.playfairDisplay(
+        color: Theme.of(context).textTheme.bodyLarge?.color,
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+      ),
+    ),
+  ),
+),
+
         ],
         body: Column(
           children: [
@@ -160,7 +195,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             Expanded(
               child: BlocBuilder<NewsBloc, NewsState>(
                 builder: (context, state) {
-                  /// 🔹 SEARCH EMPTY STATE
+                  ///  SEARCH EMPTY STATE
                   if (widget.isSearch && !_hasSearched) {
                     return Center(
                       child: Column(
