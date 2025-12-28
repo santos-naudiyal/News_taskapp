@@ -32,8 +32,9 @@ Before you start, make sure you have these installed:
 Here is a quick tour of what you can do in the app:
 
 ### 1. 📰 Read the News
-When you open the app, you will see a list of news articles. You can scroll down to see more.
--   **Categories**: Look for tabs or a menu to switch topics (like "Sports", "Technology", "Business").
+When you open the app, you will see a list of news categories.
+   **Categories**: Look for tabs or a menu to switch topics (like "Sports", "Technology", "Business").
+-   **Refresh**: Pull down on the screen to refresh the news list and get the latest updates.
 
 ### 2. 📖 Read Full Articles
 Tap on any news card to open the **Article Screen**.
@@ -52,6 +53,13 @@ Looking for something specific?
 ### 5. 📤 Share
 Want to show a friend?
 -   Tap the **Share** button to send the article link to others via WhatsApp, Email, or other apps.
+
+---
+
+### 6. ☰ Menu Options
+In the top right corner of the screen, you will see a **Menu Button** (three dots).
+-   **Refresh Feed**: Tap this to instantly reload the news articles.
+-   **Go Home**: If you are in a category or reading an article, tap this to quickly go back to the main Home Screen.
 
 ---
 
