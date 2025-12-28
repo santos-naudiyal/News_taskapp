@@ -11,6 +11,12 @@ A Flutter application for browsing news articles, built with a focus on clean ar
 - **Share**: Share interesting articles with others.
 - **Dark/Light Mode**: (If applicable, based on standard features).
 
+## Data Source
+
+This application fetches live news data from [NewsAPI.org](https://newsapi.org/).
+-   **API Key**: The project includes a configured API key for demonstration purposes.
+-   **Endpoints**: Uses standard endpoints for top headlines and search.
+
 ## Architecture
 
 This project follows a **Feature-First** architecture with **Clean Architecture** principles, ensuring scalability and maintainability.
